@@ -16,7 +16,7 @@ class CustomTextfield extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 33.5, vertical: 10),
-      child: TextField(
+      child: TextFormField(
         obscureText: obscure,
         decoration: InputDecoration(
             hintText: hintText,
