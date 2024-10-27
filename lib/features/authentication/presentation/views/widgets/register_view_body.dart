@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_app/core/utils/styles.dart';
+import 'package:go_router/go_router.dart';
+import 'package:wallet_app/core/utils/approuter.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/register_title_section.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/shadowed_button.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/submit_data_section.dart';
-import 'package:wallet_app/features/authentication/presentation/views/widgets/text_fields_section.dart';
+import 'package:wallet_app/features/authentication/presentation/views/widgets/register_text_fields_section.dart';
 
 class RegisterViewBody extends StatelessWidget {
   const RegisterViewBody({super.key});
@@ -16,21 +17,14 @@ class RegisterViewBody extends StatelessWidget {
         children: [
           const RegisterTitleSection(),
           const ShadowedButton(),
-          const TextFieldsSection(),
+          const RegisterTextFieldsSection(),
           SubmitDataSection(
-            text: 'Register',
-            richText: RichText(
-              text: TextSpan(
-                text: "You have an account ?",
-                style: Styles.textstyle13,
-                children: <TextSpan>[
-                  TextSpan(
-                      text: ' Login',
-                      style: Styles.textstyle13
-                          .copyWith(color: const Color(0xff81C2FF))),
-                ],
-              ),
-            ),
+            buttonText: 'Register',
+            title: 'You have an account ?',
+            subtitle: ' Login',
+            onTap: () {
+              context.push(AppRouter.loginView);
+            },
           )
         ],
       ),

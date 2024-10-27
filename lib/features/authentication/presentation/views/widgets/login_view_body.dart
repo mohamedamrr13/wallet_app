@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:wallet_app/core/utils/approuter.dart';
 import 'package:wallet_app/core/utils/assets.dart';
-import 'package:wallet_app/core/utils/styles.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/custom_textfield.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/login_title_section.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/shadowed_button.dart';
@@ -29,18 +30,13 @@ class LoginViewBody extends StatelessWidget {
                 color: Color(0xff828282)),
           ),
           SubmitDataSection(
-              richText: RichText(
-                text: TextSpan(
-                    text: 'Dont have an account yet ?',
-                    style: Styles.textstyle13,
-                    children: [
-                      TextSpan(
-                          text: ' Login',
-                          style: Styles.textstyle13
-                              .copyWith(color: const Color(0xff81C2FF)))
-                    ]),
-              ),
-              text: 'Login')
+            title: 'Dont have an account yet ?',
+            subtitle: ' Sign Up',
+            buttonText: 'Login',
+            onTap: () {
+              GoRouter.of(context).pop();
+            },
+          )
         ],
       ),
     );

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/custom_textfield.dart';
 
-class TextFieldsSection extends StatelessWidget {
-  const TextFieldsSection({super.key});
+class RegisterTextFieldsSection extends StatelessWidget {
+  const RegisterTextFieldsSection({super.key});
   final String profileAssetName = 'assets/images/profile.svg';
   final String smsAssetName = 'assets/images/sms.svg';
   final String keyAssetName = 'assets/images/key-square.svg';

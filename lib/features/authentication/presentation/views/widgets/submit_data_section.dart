@@ -5,9 +5,15 @@ import 'package:wallet_app/core/utils/styles.dart';
 
 class SubmitDataSection extends StatelessWidget {
   const SubmitDataSection(
-      {super.key, required this.richText, required this.text});
-  final RichText richText;
-  final String text;
+      {super.key,
+      required this.title,
+      required this.subtitle,
+      required this.buttonText,
+      required this.onTap});
+  final String title;
+  final String subtitle;
+  final String buttonText;
+  final GestureTapCallback onTap;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,18 +32,25 @@ class SubmitDataSection extends StatelessWidget {
             onPressed: () {},
             child: Center(
               child: Text(
-                text,
+                buttonText,
                 style: Styles.textstyle18,
               ),
             ),
           ),
         ),
         GestureDetector(
-          onTap: () {
-            context.go(AppRouter.loginView);
-          },
+          onTap: onTap,
           child: Padding(
-              padding: const EdgeInsets.only(top: 10.0), child: richText),
+            padding: const EdgeInsets.only(top: 10.0),
+            child: RichText(
+              text: TextSpan(text: title, style: Styles.textstyle13, children: [
+                TextSpan(
+                    text: subtitle,
+                    style: Styles.textstyle13
+                        .copyWith(color: const Color(0xff81C2FF)))
+              ]),
+            ),
+          ),
         )
       ],
     );
