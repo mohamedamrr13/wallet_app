@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:either_dart/either.dart';
+import 'package:flutter/material.dart';
 import 'package:wallet_app/core/networking/api_constants.dart';
 import 'package:wallet_app/core/networking/api_service.dart';
 import 'package:wallet_app/core/networking/failure.dart';
