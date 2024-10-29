@@ -27,10 +27,12 @@ class SubmitDataSection extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 91.0),
           child: TextButton(
             style: TextButton.styleFrom(
-                minimumSize: const Size(139, 63),
-                backgroundColor: const Color(0xff5B259F),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15))),
+              minimumSize: const Size(139, 63),
+              backgroundColor: const Color(0xff5B259F),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
             onPressed: onPressed,
             child: Center(
               child: Text(

@@ -7,16 +7,22 @@ class CustomTextfield extends StatelessWidget {
       required this.hintText,
       required this.icon,
       this.suffixIcon,
-      this.obscure = false});
+      this.obscure = false,
+      this.onSubmitted,
+      required this.controller});
   final String hintText;
   final Widget icon;
   final Widget? suffixIcon;
   final bool obscure;
+  final void Function(String)? onSubmitted;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 33.5, vertical: 10),
       child: TextFormField(
+        controller: controller,
+        onFieldSubmitted: onSubmitted,
         validator: (data) {
           if (data?.isEmpty ?? true) {
             return 'The $hintText is required.';
@@ -25,26 +31,42 @@ class CustomTextfield extends StatelessWidget {
         },
         obscureText: obscure,
         decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle:
-                Styles.textstyle16.copyWith(color: const Color(0xff828282)),
-            prefixIcon: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: icon,
+          hintText: hintText,
+          hintStyle: Styles.textstyle16.copyWith(
+            color: const Color(0xff828282),
+          ),
+          prefixIcon: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: icon,
+          ),
+          suffixIcon: suffixIcon,
+          fillColor: const Color(0xffF2F2F2),
+          filled: true,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(
+              color: Color(0xffF2F2F2),
             ),
-            suffixIcon: suffixIcon,
-            fillColor: const Color(0xffF2F2F2),
-            filled: true,
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: const BorderSide(color: Color(0xffF2F2F2))),
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0xffF2F2F2)),
-              borderRadius: BorderRadius.circular(15),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+              color: Color(0xffF2F2F2),
             ),
-            errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: const BorderSide(color: Color(0xffF2F2F2)))),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(
+              color: Color(0xffF2F2F2),
+            ),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(
+              color: Color(0xffF2F2F2),
+            ),
+          ),
+        ),
       ),
     );
   }

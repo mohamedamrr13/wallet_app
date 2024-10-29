@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wallet_app/core/theming/styles.dart';
 
-class RegisterTitleSection extends StatelessWidget {
-  const RegisterTitleSection({super.key});
+class SignUpTitleSection extends StatelessWidget {
+  const SignUpTitleSection({super.key});
 
   @override
   Widget build(BuildContext context) {
