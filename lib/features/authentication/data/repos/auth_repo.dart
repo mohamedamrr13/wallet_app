@@ -4,28 +4,25 @@ import 'package:wallet_app/core/networking/api_constants.dart';
 import 'package:wallet_app/core/networking/api_service.dart';
 import 'package:wallet_app/core/networking/failure.dart';
 import 'package:wallet_app/features/authentication/data/models/auth_response_model/auth_response_model.dart';
+import 'package:wallet_app/features/authentication/data/models/user_model.dart';
 
 class AuthRepo {
   final ApiService _apiService;
   AuthRepo(this._apiService);
-  Future<Either<Failure, AuthResponseModel>> signUp({
-    required String firstName,
-    required String lastName,
-    required String email,
-    required String password,
-  }) async {
+  Future<Either<Failure, AuthResponseModel>> signUp(
+      {required UserModel userModel}) async {
     try {
       var response =
           await _apiService.post(endPoint: ApiConstants.signUpEndPoint, data: {
-        "firstName": firstName,
-        "lastName": lastName,
-        "email": email,
+        "firstName": userModel.firstName,
+        "lastName": userModel.lastName,
+        "email": userModel.email,
         "role": 'N/A',
         "address": 'N/A',
         "phoneNumber": 'N/A',
         "gender": 'N/A',
-        "password": password,
-        "passwordConfirm": password
+        "password": userModel.password,
+        "passwordConfirm": userModel.password
       });
       return Right(AuthResponseModel.fromJson(response));
     } catch (e) {
