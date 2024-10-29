@@ -10,19 +10,26 @@ class ShadowedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
             blurRadius: 12,
             color: const Color(0xff000000).withOpacity(0.15),
             spreadRadius: 0,
-            offset: const Offset(0, 2))
-      ], color: Colors.white, borderRadius: BorderRadius.circular(15)),
+            offset: const Offset(0, 2),
+          )
+        ],
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+      ),
       margin: const EdgeInsets.symmetric(horizontal: 90),
       width: 130,
       child: TextButton(
         style: TextButton.styleFrom(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15))),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+        ),
         onPressed: () {},
         child: Padding(
           padding: const EdgeInsets.only(left: 8),

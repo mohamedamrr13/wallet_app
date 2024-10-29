@@ -16,7 +16,9 @@ class SignUpCubit extends Cubit<SignUpState> {
     //Loading
     await authRepo.signUp(userModel: userModel).fold((failure) {
       //failed to register
-      emit(SignUpFailure(failure.errMessage));
+      emit(
+        SignUpFailure(failure.errMessage),
+      );
     }, (success) {
       //succeded to register👌
       emit(SignUpSuccess(AuthResponseModel(

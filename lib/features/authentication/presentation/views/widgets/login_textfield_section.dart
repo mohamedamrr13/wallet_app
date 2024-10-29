@@ -18,9 +18,11 @@ class _LoginTextfieldSectionState extends State<LoginTextfieldSection> {
     return Column(
       children: [
         CustomTextfield(
+            controller: TextEditingController(),
             hintText: 'Username',
             icon: SvgPicture.asset(AssetData.profileAssetName)),
         CustomTextfield(
+          controller: TextEditingController(),
           obscure: obscure ? true : false,
           hintText: 'Password',
           icon: SvgPicture.asset(AssetData.keyAssetName),
