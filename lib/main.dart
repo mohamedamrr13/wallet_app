@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_app/core/networking/api_service.dart';
 import 'package:wallet_app/core/routing/approuter.dart';
 
 void main() {
+  ApiService().addPrettyDioLogger();
   runApp(const MyWallet());
 }
 

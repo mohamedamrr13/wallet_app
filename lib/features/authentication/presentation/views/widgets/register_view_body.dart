@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:wallet_app/core/routing/approuter.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/register_title_section.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/shadowed_button.dart';
-import 'package:wallet_app/features/authentication/presentation/views/widgets/submit_data_section.dart';
+import 'package:wallet_app/core/widgets/submit_data_section.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/register_text_fields_section.dart';
 
 class RegisterViewBody extends StatefulWidget {

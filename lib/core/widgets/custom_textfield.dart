@@ -18,7 +18,10 @@ class CustomTextfield extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 33.5, vertical: 10),
       child: TextFormField(
         validator: (data) {
-          if (data?.isEmpty ?? true) return 'The $hintText is required.';
+          if (data?.isEmpty ?? true) {
+            return 'The $hintText is required.';
+          }
+          return null; // still gonna make it better
         },
         obscureText: obscure,
         decoration: InputDecoration(
