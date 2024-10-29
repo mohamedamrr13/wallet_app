@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:wallet_app/core/utils/styles.dart';
+import 'package:wallet_app/core/theming/styles.dart';
 
 class ShadowedButton extends StatelessWidget {
   const ShadowedButton({super.key});

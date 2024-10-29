@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_app/core/utils/approuter.dart';
+import 'package:wallet_app/core/routing/approuter.dart';
 
 void main() {
   runApp(const MyWallet());

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_app/core/utils/styles.dart';
+import 'package:wallet_app/core/theming/styles.dart';
 
 class LoginTitleSection extends StatelessWidget {
   const LoginTitleSection({super.key});

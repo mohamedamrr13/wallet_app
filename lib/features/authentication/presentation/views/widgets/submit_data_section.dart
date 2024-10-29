@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:wallet_app/core/utils/approuter.dart';
-import 'package:wallet_app/core/utils/styles.dart';
+import 'package:wallet_app/core/routing/approuter.dart';
+import 'package:wallet_app/core/theming/styles.dart';
 
 class SubmitDataSection extends StatelessWidget {
+  // Contains the Button and RichText for both authentication methods (Login,SignUP)
+
   const SubmitDataSection(
       {super.key,
       required this.title,
       required this.subtitle,
       required this.buttonText,
-      required this.onTap});
+      required this.onTap,
+      required this.onPressed});
   final String title;
   final String subtitle;
   final String buttonText;
   final GestureTapCallback onTap;
+  final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,7 +33,7 @@ class SubmitDataSection extends StatelessWidget {
                 backgroundColor: const Color(0xff5B259F),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15))),
-            onPressed: () {},
+            onPressed: onPressed,
             child: Center(
               child: Text(
                 buttonText,
@@ -51,6 +55,9 @@ class SubmitDataSection extends StatelessWidget {
               ]),
             ),
           ),
+        ),
+        const SizedBox(
+          height: 30,
         )
       ],
     );

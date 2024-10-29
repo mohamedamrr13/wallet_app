@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:wallet_app/features/authentication/presentation/views/widgets/custom_textfield.dart';
+import 'package:wallet_app/core/widgets/custom_textfield.dart';
 
 class RegisterTextFieldsSection extends StatefulWidget {
   const RegisterTextFieldsSection({super.key});
