@@ -2,15 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:wallet_app/core/widgets/custom_textfield.dart';
 
-class RegisterTextFieldsSection extends StatefulWidget {
-  const RegisterTextFieldsSection({super.key});
-
+class SignUpTextFieldSection extends StatefulWidget {
+  const SignUpTextFieldSection(
+      {super.key,
+      required this.firstNameController,
+      required this.lastNameController,
+      required this.emailController,
+      required this.passwordController});
+  final TextEditingController firstNameController;
+  final TextEditingController lastNameController;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
   @override
-  State<RegisterTextFieldsSection> createState() =>
-      _RegisterTextFieldsSectionState();
+  State<SignUpTextFieldSection> createState() => _SignUpTextFieldSectionState();
 }
 
-class _RegisterTextFieldsSectionState extends State<RegisterTextFieldsSection> {
+class _SignUpTextFieldSectionState extends State<SignUpTextFieldSection> {
   final String profileAssetName = 'assets/images/profile.svg';
 
   final String smsAssetName = 'assets/images/sms.svg';
@@ -30,13 +37,20 @@ class _RegisterTextFieldsSectionState extends State<RegisterTextFieldsSection> {
         ),
         SizedBox(
           child: CustomTextfield(
-              hintText: 'First Name', icon: SvgPicture.asset(profileAssetName)),
+              textEditingController: widget.firstNameController,
+              hintText: 'First Name',
+              icon: SvgPicture.asset(profileAssetName)),
         ),
         CustomTextfield(
-            hintText: 'Last Name', icon: SvgPicture.asset(profileAssetName)),
+            textEditingController: widget.lastNameController,
+            hintText: 'Last Name',
+            icon: SvgPicture.asset(profileAssetName)),
         CustomTextfield(
-            hintText: 'Email', icon: SvgPicture.asset(smsAssetName)),
+            textEditingController: widget.emailController,
+            hintText: 'Email',
+            icon: SvgPicture.asset(smsAssetName)),
         CustomTextfield(
+          textEditingController: widget.passwordController,
           obscure: obscure ? true : false,
           hintText: 'Password',
           icon: SvgPicture.asset(keyAssetName),

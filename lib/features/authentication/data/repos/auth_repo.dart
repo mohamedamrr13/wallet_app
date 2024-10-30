@@ -17,10 +17,10 @@ class AuthRepo {
         "firstName": userModel.firstName,
         "lastName": userModel.lastName,
         "email": userModel.email,
-        "role": 'N/A',
-        "address": 'N/A',
-        "phoneNumber": 'N/A',
-        "gender": 'N/A',
+        "role": 'parent',
+        "address": 'Alexandria, Egypt',
+        "phoneNumber": '01247896637',
+        "gender": 'male',
         "password": userModel.password,
         "passwordConfirm": userModel.password
       });

@@ -7,11 +7,13 @@ class CustomTextfield extends StatelessWidget {
       required this.hintText,
       required this.icon,
       this.suffixIcon,
-      this.obscure = false});
+      this.obscure = false,
+      required this.textEditingController});
   final String hintText;
   final Widget icon;
   final Widget? suffixIcon;
   final bool obscure;
+  final TextEditingController textEditingController;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,6 +25,7 @@ class CustomTextfield extends StatelessWidget {
           }
           return null; // still gonna make it better
         },
+        controller: textEditingController,
         obscureText: obscure,
         decoration: InputDecoration(
             hintText: hintText,

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wallet_app/core/routing/approuter.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/login_textfield_section.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/login_title_section.dart';
-import 'package:wallet_app/features/authentication/presentation/views/widgets/shadowed_button.dart';
+import 'package:wallet_app/core/widgets/shadowed_button.dart';
 import 'package:wallet_app/core/widgets/submit_data_section.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -36,7 +37,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 }
               },
               onTap: () {
-                GoRouter.of(context).pop();
+                GoRouter.of(context).push(AppRouter.signUpView);
               },
             )
           ],
