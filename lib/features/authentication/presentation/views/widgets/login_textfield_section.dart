@@ -4,8 +4,12 @@ import 'package:wallet_app/core/utils/assets.dart';
 import 'package:wallet_app/core/widgets/custom_textfield.dart';
 
 class LoginTextfieldSection extends StatefulWidget {
-  const LoginTextfieldSection({super.key});
-
+  const LoginTextfieldSection(
+      {super.key,
+      required this.emailController,
+      required this.passwordController});
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
   @override
   State<LoginTextfieldSection> createState() => _LoginTextfieldSectionState();
 }
@@ -18,11 +22,11 @@ class _LoginTextfieldSectionState extends State<LoginTextfieldSection> {
     return Column(
       children: [
         CustomTextfield(
-          textEditingController: TextEditingController(),
-            hintText: 'Username',
+            textEditingController: widget.emailController,
+            hintText: 'Email',
             icon: SvgPicture.asset(AssetData.profileAssetName)),
         CustomTextfield(
-          textEditingController: TextEditingController(),
+          textEditingController: widget.passwordController,
           obscure: obscure ? true : false,
           hintText: 'Password',
           icon: SvgPicture.asset(AssetData.keyAssetName),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wallet_app/core/helper/methods.dart';
 import 'package:wallet_app/core/routing/approuter.dart';
+import 'package:wallet_app/features/authentication/presentation/logic/login_cubit/login_cubit.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/login_textfield_section.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/login_title_section.dart';
 import 'package:wallet_app/core/widgets/shadowed_button.dart';
@@ -15,34 +18,56 @@ class LoginViewBody extends StatefulWidget {
 
 class _LoginViewBodyState extends State<LoginViewBody> {
   GlobalKey<FormState> formkey = GlobalKey();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formkey,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const LoginTitleSection(),
-            const ShadowedButton(),
-            const SizedBox(height: 38),
-            const LoginTextfieldSection(),
-            SubmitDataSection(
-              title: 'Dont have an account yet ?',
-              subtitle: ' Sign Up',
-              buttonText: 'Login',
-              onPressed: () {
-                if (formkey.currentState!.validate()) {
-                  setState(() {});
-                }
-              },
-              onTap: () {
-                GoRouter.of(context).push(AppRouter.signUpView);
-              },
-            )
-          ],
-        ),
-      ),
+    return BlocConsumer<LoginCubit, LoginState>(
+      listener: (context, state) {
+        if (state is LoginSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Succefully logged in'),
+            ),
+          );
+        } else if (state is LoginFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.errMessage),
+            ),
+          );
+        }
+      },
+      builder: (context, state) {
+        return Form(
+          key: formkey,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const LoginTitleSection(),
+                const ShadowedButton(),
+                const SizedBox(height: 38),
+                LoginTextfieldSection(
+                    emailController: emailController,
+                    passwordController: passwordController),
+                SubmitDataSection(
+                  title: 'Dont have an account yet ?',
+                  subtitle: ' Sign Up',
+                  buttonText: 'Login',
+                  onPressed: () {
+                    HelperMethods.loginMethod(context, formkey,
+                        emailController.text, passwordController.text);
+                  },
+                  onTap: () {
+                    GoRouter.of(context).push(AppRouter.signUpView);
+                  },
+                )
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
