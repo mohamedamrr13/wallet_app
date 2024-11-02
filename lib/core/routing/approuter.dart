@@ -6,9 +6,11 @@ import 'package:wallet_app/features/authentication/presentation/logic/login_cubi
 import 'package:wallet_app/features/authentication/presentation/logic/sign_up_cubit/sign_up_cubit.dart';
 import 'package:wallet_app/features/authentication/presentation/views/login_view.dart';
 import 'package:wallet_app/features/authentication/presentation/views/signup_view.dart';
+import 'package:wallet_app/features/home/presentation/home_view.dart';
 
 class AppRouter {
   static const signUpView = '/loginView';
+  static const homeView = '/homeView';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -28,6 +30,10 @@ class AppRouter {
           child: const SignUpView(),
         ),
       ),
+      GoRoute(
+        path: homeView,
+        builder: (context, state) => const HomeView(),
+      )
     ],
   );
 }

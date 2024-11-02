@@ -4,7 +4,7 @@ import 'package:wallet_app/core/theming/styles.dart';
 
 class ShadowedButton extends StatelessWidget {
   const ShadowedButton({super.key});
-  final String assetName = 'assets/images/google.svg';
+  final String assetName = 'assets/svgs/google.svg';
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,9 @@ class ShadowedButton extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 90),
       width: 130,
       child: TextButton(
+        
         style: TextButton.styleFrom(
+          
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15))),
         onPressed: () {},

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wallet_app/core/helper/methods.dart';
 import 'package:wallet_app/core/routing/approuter.dart';
+import 'package:wallet_app/core/theming/styles.dart';
 import 'package:wallet_app/features/authentication/presentation/logic/login_cubit/login_cubit.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/login_textfield_section.dart';
 import 'package:wallet_app/features/authentication/presentation/views/widgets/login_title_section.dart';
@@ -26,11 +27,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Succefully logged in'),
-            ),
-          );
+          HelperMethods.showSnackBar(context, "You are now Logged In.");
+          GoRouter.of(context).push(AppRouter.homeView);
         } else if (state is LoginFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -49,17 +47,29 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 const ShadowedButton(),
                 const SizedBox(height: 38),
                 LoginTextfieldSection(
+                    enabled: state is LoginLoading ? false : true,
                     emailController: emailController,
                     passwordController: passwordController),
                 SubmitDataSection(
                   title: 'Dont have an account yet ?',
                   subtitle: ' Sign Up',
-                  buttonText: 'Login',
+                  buttonText: state is LoginLoading
+                      ? const SizedBox(
+                          height: 20,
+                          width: 20,
+                          child: CircularProgressIndicator(
+                            color: Colors.white,
+                          ),
+                        )
+                      : const Text(
+                          "Login",
+                          style: Styles.textstyle18,
+                        ),
                   onPressed: () {
                     HelperMethods.loginMethod(context, formkey,
                         emailController.text, passwordController.text);
                   },
-                  onTap: () {
+                  switchOnTap: () {
                     GoRouter.of(context).push(AppRouter.signUpView);
                   },
                 )

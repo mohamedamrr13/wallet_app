@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:wallet_app/core/networking/api_constants.dart';
+import 'package:wallet_app/features/authentication/data/models/user_model.dart';
 
 class ApiService {
   late final Dio _dio;
