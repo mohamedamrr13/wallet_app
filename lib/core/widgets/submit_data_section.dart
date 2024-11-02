@@ -9,12 +9,12 @@ class SubmitDataSection extends StatelessWidget {
       required this.title,
       required this.subtitle,
       required this.buttonText,
-      required this.onTap,
+      required this.switchOnTap,
       required this.onPressed});
   final String title;
   final String subtitle;
-  final String buttonText;
-  final GestureTapCallback onTap;
+  final Widget buttonText;
+  final GestureTapCallback switchOnTap;
   final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
@@ -33,15 +33,12 @@ class SubmitDataSection extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15))),
             onPressed: onPressed,
             child: Center(
-              child: Text(
-                buttonText,
-                style: Styles.textstyle18,
-              ),
+              child: buttonText,
             ),
           ),
         ),
         GestureDetector(
-          onTap: onTap,
+          onTap: switchOnTap,
           child: Padding(
             padding: const EdgeInsets.only(top: 10.0),
             child: RichText(

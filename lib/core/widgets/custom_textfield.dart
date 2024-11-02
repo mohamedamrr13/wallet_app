@@ -8,17 +8,20 @@ class CustomTextfield extends StatelessWidget {
       required this.icon,
       this.suffixIcon,
       this.obscure = false,
-      required this.textEditingController});
+      required this.textEditingController,
+      required this.enabled});
   final String hintText;
   final Widget icon;
   final Widget? suffixIcon;
   final bool obscure;
   final TextEditingController textEditingController;
+  final bool enabled;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 33.5, vertical: 10),
       child: TextFormField(
+        enabled: enabled,
         validator: (data) {
           if (data?.isEmpty ?? true) {
             return 'The $hintText is required.';
