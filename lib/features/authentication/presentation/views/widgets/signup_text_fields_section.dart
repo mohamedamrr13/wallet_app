@@ -1,34 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:wallet_app/core/helper/constants.dart';
+import 'package:wallet_app/core/utils/assets.dart';
 import 'package:wallet_app/core/widgets/custom_textfield.dart';
-import 'package:wallet_app/features/authentication/data/models/user_model.dart';
 
 class SignUpTextFieldSection extends StatefulWidget {
-  const SignUpTextFieldSection({
-    super.key,
-    required this.firstNameController,
-    required this.lastNameController,
-    required this.emailController,
-    required this.passwordController,
-  });
+  const SignUpTextFieldSection(
+      {super.key,
+      required this.firstNameController,
+      required this.lastNameController,
+      required this.emailController,
+      required this.passwordController,
+      required this.enabled});
   final TextEditingController firstNameController;
   final TextEditingController lastNameController;
   final TextEditingController emailController;
   final TextEditingController passwordController;
-
+  final bool enabled;
   @override
   State<SignUpTextFieldSection> createState() => _SignUpTextFieldSectionState();
 }
 
 class _SignUpTextFieldSectionState extends State<SignUpTextFieldSection> {
-  final String profileAssetName = 'assets/images/profile.svg';
-
-  final String smsAssetName = 'assets/images/sms.svg';
-
-  final String keyAssetName = 'assets/images/key-square.svg';
-
-  final String eyeAssetName = 'assets/images/Eye-slash.svg';
-
   bool obscure = true;
 
   @override
@@ -40,26 +33,30 @@ class _SignUpTextFieldSectionState extends State<SignUpTextFieldSection> {
         ),
         SizedBox(
           child: CustomTextfield(
-            controller: widget.firstNameController,
-            hintText: 'First Name',
-            icon: SvgPicture.asset(profileAssetName),
-          ),
+              enabled: widget.enabled,
+              textEditingController: widget.firstNameController,
+              hintText: 'First Name',
+              icon: SvgPicture.asset(AssetData.profileAssetName)),
         ),
         CustomTextfield(
-          controller: widget.lastNameController,
+          textEditingController: widget.lastNameController,
           hintText: 'Last Name',
-          icon: SvgPicture.asset(profileAssetName),
+          icon: SvgPicture.asset(AssetData.profileAssetName),
+          enabled: widget.enabled,
         ),
         CustomTextfield(
-          controller: widget.emailController,
-          hintText: 'Email',
-          icon: SvgPicture.asset(smsAssetName),
-        ),
+            textEditingController: widget.emailController,
+            hintText: 'Email',
+            icon: SvgPicture.asset(AssetData.smsAssetName),
+            enabled: widget.enabled),
         CustomTextfield(
-          controller: widget.passwordController,
+          textEditingController: widget.passwordController,
           obscure: obscure ? true : false,
           hintText: 'Password',
-          icon: SvgPicture.asset(keyAssetName),
+          icon: SvgPicture.asset(
+            AssetData.keyAssetName,
+          ),
+          enabled: widget.enabled,
           suffixIcon: IconButton(
               onPressed: () => {
                     setState(() {
@@ -68,7 +65,10 @@ class _SignUpTextFieldSectionState extends State<SignUpTextFieldSection> {
                   },
               icon: obscure
                   ? const Icon(Icons.visibility_off)
-                  : const Icon(Icons.visibility),
+                  : const Icon(
+                      Icons.visibility,
+                      color: Color(kPrimaryColor),
+                    ),
               color: const Color(0xff828282)),
         ),
       ],

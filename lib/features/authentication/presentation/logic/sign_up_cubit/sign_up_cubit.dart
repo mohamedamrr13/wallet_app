@@ -10,7 +10,6 @@ part 'sign_up_state.dart';
 class SignUpCubit extends Cubit<SignUpState> {
   SignUpCubit(this.authRepo) : super(SignUpInitial());
   final AuthRepo authRepo;
-//Mostafa Test
   Future<void> signUp({required UserModel userModel}) async {
     emit(SignUpLoading());
     //Loading
