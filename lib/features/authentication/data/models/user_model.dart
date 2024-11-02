@@ -15,7 +15,7 @@ class UserModel {
     required this.email,
     this.role = 'parent',
     this.address = 'Alexandria, Egypt',
-    this.phoneNumber = '01247896637',
+    this.phoneNumber = '0123456789',
     this.gender = 'male',
     required this.password,
     required this.passwordConfirm,

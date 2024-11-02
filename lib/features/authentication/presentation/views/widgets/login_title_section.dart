@@ -15,7 +15,7 @@ class LoginTitleSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 33.5),
           child: Center(
             child: Text(
-              'Welcome back \n to Mabank Wallet',
+              'Welcome back \n to Tap\'n Pay Wallet',
               style: Styles.textstyle24,
               textAlign: TextAlign.center,
             ),
